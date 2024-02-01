@@ -1,9 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 
-
-
-
 currentPlayer="x"
 
 winPositions=[[1,2,3],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7],[4,5,6],[7,8,9]]
@@ -27,7 +24,6 @@ def btn_clicked(position,btn):
             # print(btn)
             check_if_won()
 
-
     if currentPlayer=="x":
         currentPlayer="o"
         # print(currentPlayer,'assigned') This print a vise versa.
@@ -36,8 +32,6 @@ def btn_clicked(position,btn):
         # print(currentPlayer,'assigned') This print a vise versa.
 
     label.config(text=f"{currentPlayer}'s turn") # This line show whose turn is it.
-
-
 
 def check_if_won():
     global currentPlayer, winPositions, positions,buttons
@@ -75,8 +69,6 @@ def check_if_won():
                 restart()
                 break
 
-
-
     if currentPlayer=="o":
         for win in winPositions:
             if win[0] not in ypos:
@@ -97,10 +89,6 @@ def check_if_won():
             messagebox.showinfo('tik tak toe',"it's a Draw")
             restart()
 
-
-
-
-
 def highlight(win):
     global positions
 
@@ -110,8 +98,6 @@ def highlight(win):
             # print(pos) #Print win position of current player
             pos['btn'].config(bg='green')
             print(pos,'button changed')
-
-
 
 def restart():
     global positions, buttons
@@ -125,9 +111,6 @@ def restart():
 window = Tk()
 window.title("Tik Tac Toe")
 window.geometry('200x250')
-
-
-
 
 btn1 = Button(window, text=' ', height=3, width=6, bg= 'grey', command=lambda : btn_clicked(1,btn1))
 btn1.grid(row=0, column=0)
@@ -161,15 +144,10 @@ positions=[{"position": 1,"player":"",'btn':btn1},{"position": 2,"player":"",'bt
            {"position": 4,"player":"",'btn':btn4},{"position": 5,"player":"",'btn':btn5},{"position": 6,"player":"",'btn':btn6},
            {"position": 7,"player":"",'btn':btn7},{"position": 8,"player":"",'btn':btn8},{"position": 9,"player":"",'btn':btn9}]
 
-
-
 label = Label(window,text=f"{currentPlayer}'s turn")
 label.grid(row=4, column=0)
 
 restart()
 Button(window, text='Restart',command=restart).grid(row=4, column=1)
-
-
-
 
 window.mainloop()
